@@ -116,29 +116,6 @@
             <!-- <h4 class="pb-2 px-5" style="float: left">광고내용 입력</h4> -->
             <div
               style="
-                width: 90%;
-                height: 100px;
-                color: #000;
-                border-radius: 7;
-                display: inline-block;
-              "
-              class="py-3 SUIT-font form-control shadow"
-            >
-              <h4 class="SUIT-font" style="float: left">
-                허위/과대 광고로 의심되는 광고가 있으신가요? 광고 내용을
-                입력해서 결과를 확인해보세요!
-              </h4>
-              <h7 class="SUIT-font" style="color: #696969; float: left"
-                >오타없이 정확하게 입력해 주세요. 입력한 내용을 파악하여 해당
-                광고의 허위, 과대광고 유무와 판별 이유를 제공합니다.</h7
-              >
-            </div>
-          </div>
-          <div class="container py-5 px-lg-5">
-            <textarea
-              id="memo"
-              autocomplete="off"
-              style="
                 resize: none;
                 width: 90%;
                 height: 270px;
@@ -146,14 +123,36 @@
                 border-radius: 7;
                 display: inline-block;
                 background-color: #efefef;
+                text-align: left;
               "
-              class="SUIT-font form-control shadow"
-              type="text"
-              placeholder="광고 내용을 입력해주세요"
-            ></textarea>
+              class="SUIT-font form-control shadow mb-4"
+            >
+              광고내용 ~~
+            </div>
+            <div
+              style="
+                width: 90%;
+                height: 100px;
+                color: #000;
+                border-radius: 7;
+                display: inline-block;
+                text-align: left;
+              "
+              class="py-3 SUIT-font form-control shadow"
+            >
+              <h4 class="SUIT-font" style="color: #ff0000">
+                이 광고는 98.12% 확률로 허위광고 입니다.
+              </h4>
+              <h5 class="SUIT-font" style="color: #424242">
+                발달, 보호, 정상, 수준 키워드가 허위광고라고 판별하는 데에
+                영향을 끼쳤습니다.
+              </h5>
+            </div>
+          </div>
+          <div class="container py-5 px-lg-5">
             <div class="text-center pt-5">
               <a
-                onclick="analysis_start()"
+                onclick="analysis_restart()"
                 type="button"
                 class="SUIT-font btn px-9 py-3 btn-primary mt-0"
                 style="
@@ -163,7 +162,7 @@
                   display: inline-block;
                   font-weight: bold;
                 "
-                >분석시작</a
+                >재분석하기</a
               >
             </div>
           </div>
@@ -259,7 +258,10 @@
       </div>
       <!-- Footer End -->
 
+      <!-- Footer End -->
+
       <!-- Back to Top -->
+    
 
     <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
@@ -276,7 +278,7 @@
     <script src="../js/main.js"></script>
     <script
       language="JavaScript"
-      src="../js/index.js"
+      src="../js/result.js"
       charset=" EUC-KR "
     ></script>
   </body>

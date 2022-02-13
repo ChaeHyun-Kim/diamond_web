@@ -93,7 +93,11 @@
       .SUIT-font {
         font-family: "SUIT-Medium", sans-serif; /*웹 폰트 지정*/
       }
-    </style>
+    </style> 
+      <script>
+      
+      var paramValue =request.getParameter('value');  
+      </script>
   </head>
 
   <body>
@@ -143,7 +147,7 @@
               <h4 class="SUIT-font" style="color: #ff0000">
                 이 광고는 98.12% 확률로 허위광고 입니다.
               </h4>
-              <h5 class="SUIT-font" style="color: #424242">
+              <h5 id="test "class="SUIT-font" style="color: #424242">
                 발달, 보호, 정상, 수준 키워드가 허위광고라고 판별하는 데에
                 영향을 끼쳤습니다.
               </h5>
@@ -152,7 +156,8 @@
           <div class="container py-5 px-lg-5">
             <div class="text-center pt-5">
               <a
-                onclick="analysis_restart()"
+              id="result"
+              onclick="alert(parseInt(paramValue));" 
                 type="button"
                 class="SUIT-font btn px-9 py-3 btn-primary mt-0"
                 style="
@@ -162,8 +167,9 @@
                   display: inline-block;
                   font-weight: bold;
                 "
-                >재분석하기</a
-              >
+                >50
+                </a>
+                <!-- 재분석하기</a> -->
             </div>
           </div>
         </div>

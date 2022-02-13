@@ -16,7 +16,12 @@ MODEL_NAME = 'lstm_best_model.h5'
 model = keras.models.load_model(dir_path+MODEL_NAME)
 model.summary()
 
+
 app = Flask(__name__)
+
+@app.route("/ping", methods=['GET'])
+def ping():
+    return "통신 테스트"
 
 @app.route('/')
 def main():
@@ -24,10 +29,12 @@ def main():
 
     return render_template('index.html', memo=value)
 
+
 @app.route('/', methods=['POST'])
 def home():
     value = 'hello, world'
     return render_template('index.html', memo=value)
+
 
 if __name__ == "__main__":
     app.run(debug=True)

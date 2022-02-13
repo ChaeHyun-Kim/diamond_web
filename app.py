@@ -1,9 +1,21 @@
 from flask import Flask, render_template, request
 import pickle
 import numpy as np
+from tensorflow import keras
+from keras.models import Sequential
+from keras.layers import Dense
+from keras.layers import Flatten
+from keras.layers.convolutional import Conv2D
+from keras.layers.convolutional import MaxPooling2D
+from keras.preprocessing.image import ImageDataGenerator
 
-# 우리 모델 불러오기
-# model = pickle.load(open('iri.pkl', 'rb'))
+dir_path ='C://Users//kjh00//OneDrive//바탕 화면//크리마란- 산학연계//'
+MODEL_NAME = 'lstm_best_model.h5'
+
+
+model = keras.models.load_model(dir_path+MODEL_NAME)
+model.summary()
+
 
 app = Flask(__name__)
 
@@ -13,17 +25,16 @@ def ping():
 
 @app.route('/')
 def main():
-    return render_template('index.html')
+    value = 'hello, world'
 
-# @app.route('/', methods=['POST'])
-# def home():
-#     data1 = request.form['a']
-#     data2 = request.form['b']
-#     data3 = request.form['c']
-#     data4 = request.form['d']
-#     arr = np.array([[data1, data2, data3, data4]])
-#     pred = model.predict(arr)
-#     return render_template('after.html', data=pred)
+    return render_template('index.html', memo=value)
+
+
+@app.route('/', methods=['POST'])
+def home():
+    value = 'hello, world'
+    return render_template('index.html', memo=value)
+
 
 if __name__ == "__main__":
     app.run(debug=True)

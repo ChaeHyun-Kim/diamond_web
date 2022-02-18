@@ -1,7 +1,7 @@
 // const { Alert } = require("bootstrap");
 
 function analysis_start() {
-  location.href = "result.html?value=98";
+  location.href = "result.html";
 }
 // fetch("http://127.0.0.1:5500/templates/", {
 //   method: "GET",

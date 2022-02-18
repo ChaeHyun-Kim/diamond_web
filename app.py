@@ -9,12 +9,12 @@ from keras.layers.convolutional import Conv2D
 from keras.layers.convolutional import MaxPooling2D
 from keras.preprocessing.image import ImageDataGenerator
 
-dir_path ='C://Users//kjh00//OneDrive//바탕 화면//크리마란- 산학연계//'
-MODEL_NAME = 'lstm_best_model.h5'
+# dir_path ='C://Users//kjh00//OneDrive//바탕 화면//크리마란- 산학연계//'
+# MODEL_NAME = 'lstm_best_model.h5'
 
 
-model = keras.models.load_model(dir_path+MODEL_NAME)
-model.summary()
+# model = keras.models.load_model(dir_path+MODEL_NAME)
+# model.summary()
 
 
 app = Flask(__name__)

@@ -3,6 +3,8 @@
   <head>
     <meta charset="utf-8" />
     <title>Diamond_ad</title>
+
+
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <meta content="" name="keywords" />
     <meta content="" name="description" />
@@ -34,10 +36,10 @@
     <link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet" />
 
     <!-- Customized Bootstrap Stylesheet -->
-    <link href="../css/bootstrap.min.css" rel="stylesheet" />
+    <link href="../static/css/bootstrap.min.css" rel="stylesheet" />
 
     <!-- Template Stylesheet -->
-    <link href="../css/style.css" rel="stylesheet" />
+    <link href="../static/css/style.css" rel="stylesheet" />
 
     <!--font!-->
     <style>
@@ -135,8 +137,9 @@
               >
             </div>
           </div>
-          <div class="container py-5 px-lg-5">
+          <div class="container py-5 px-lg-5" method ="get" action="/calculate">
             <textarea
+              input type = "textarea" name = "memo"
               id="memo"
               autocomplete="off"
               style="
@@ -151,7 +154,9 @@
               class="SUIT-font form-control shadow"
               type="text"
               placeholder="광고 내용을 입력해주세요"
-            >{{ memo }}</textarea>
+            >
+            </textarea>
+                  
             <div class="text-center pt-5">
               <a
                 onclick="analysis_start()"
@@ -272,11 +277,11 @@
     <script src="../lib/lightbox/js/lightbox.min.js"></script>
 
     <!-- Template Javascript -->
-    <script src="../js/main.js"></script>
+    <script src="../static/js/main.js"></script>
     <script
       language="JavaScript"
-      src="../js/index.js"
+      src="../static/jsndex.js"
       charset=" EUC-KR "
     ></script>
-  </body>
-</html>
+   </body>
+ </html>

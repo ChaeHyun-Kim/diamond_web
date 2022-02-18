@@ -300,9 +300,9 @@ h6,
 /*** Fact ***/
 .fact {
   margin: 6rem 0;
-  background: url(../img/blob-top-left.png), url(../img/blob-top-right.png),
-    url(../img/blob-bottom-left.png), url(../img/blob-bottom-right.png),
-    url(../img/blob-center.png);
+  background: url(../../img/blob-top-left.png), url(../../img/blob-top-right.png),
+    url(../../img/blob-bottom-left.png), url(../../img/blob-bottom-right.png),
+    url(../../img/blob-center.png);
   background-position: left 0px top 0px, right 0px top 0px, left 0px bottom 0px,
     right 0px bottom 0px, center center;
   background-repeat: no-repeat;
@@ -331,14 +331,14 @@ h6,
   align-items: center;
   justify-content: center;
   color: var(--light);
-  background: url(../img/blob-primary.png) center center no-repeat;
+  background: url(../../img/blob-primary.png) center center no-repeat;
   background-size: contain;
   transition: 0.5s;
 }
 
 .service-item:hover .service-icon {
   color: var(--dark);
-  background: url(../img/blob-secondary.png) center center no-repeat;
+  background: url(../../img/blob-secondary.png) center center no-repeat;
   background-size: contain;
 }
 
@@ -418,9 +418,9 @@ h6,
 /*** Newsletter ***/
 .newsletter {
   margin: 6rem 0;
-  background: url(../img/blob-top-left.png), url(../img/blob-top-right.png),
-    url(../img/blob-bottom-left.png), url(../img/blob-bottom-right.png),
-    url(../img/blob-center.png);
+  background: url(../../img/blob-top-left.png), url(../../img/blob-top-right.png),
+    url(../../img/blob-bottom-left.png), url(../../img/blob-bottom-right.png),
+    url(../../img/blob-center.png);
   background-position: left 0px top 0px, right 0px top 0px, left 0px bottom 0px,
     right 0px bottom 0px, center center;
   background-repeat: no-repeat;
@@ -473,7 +473,7 @@ h6,
 .footer {
   margin-top: 6rem;
   padding-top: 9rem;
-  background: url(../img/bg-top.png), url(../img/map.png);
+  background: url(../../img/bg-top.png), url(../../img/map.png);
   background-position: center top, center center;
   background-repeat: no-repeat;
 }

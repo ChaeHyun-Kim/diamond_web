@@ -1,7 +1,8 @@
-from flask import Flask, render_template
+from flask import Flask, render_template,request,redirect,url_for
 #  request
 # import pickle
 # import numpy as np
+import tensorflow as tf
 # from tensorflow import keras
 # from keras.models import Sequential
 # from keras.layers import Dense
@@ -24,17 +25,26 @@ app = Flask(__name__)
 def ping():
     return "통신 테스트"
 
-@app.route('/', methods=['GET'])
+@app.route('/', methods=['GET','POST'])
 def main():
-    value = 'hello, world'
+    return render_template('index.html')
 
-    return render_template('index.html', memo=value)
+@app.route('/method', methods=['GET','POST'])
+def method():
+    if request.method=='GET':
+        val1=request.args['memo']
+        dir_path = 'C:/Users/com/diamond_web/lstm_best_XAImodel.h5' #모델 불러오기
+        loaded_model = tf.keras.models.load_model(dir_path)
 
 
-@app.route('/final', methods=['GET'])
-def home():
-    value = 'hello, world123'
-    return render_template('result.html', memo=value)
+        return redirect(url_for('result',val=val1))
+
+@app.route('/<val>')
+def result(val):
+    print(val)
+    #value1 = 'hello, world123'
+    print("slsls")
+    return render_template('result.html',memo1=val)
 
 
 if __name__ == "__main__":

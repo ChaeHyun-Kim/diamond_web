@@ -24,21 +24,21 @@ app = Flask(__name__)
 def ping():
     return "통신 테스트"
 
-@app.route('/test', methods=['GET'])
+@app.route('/', methods=['GET'])
 def main():
-    value = 'hello, world123456'
+    value = 'hello, world'
 
     return render_template('index.html', memo=value)
 
 
-@app.route('/result.html', methods=['GET'])
+@app.route('/final', methods=['GET'])
 def home():
     value = 'hello, world123'
     return render_template('result.html', memo=value)
 
 
 if __name__ == "__main__":
-    app.run(debug=True, port=9000)
+    app.run(debug=True, port=5000)
 # from flask import Flask 
 # app = Flask(__name__) 
 # @app.route('/') 

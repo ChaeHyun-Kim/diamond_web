@@ -1,8 +1,28 @@
-// const { Alert } = require("bootstrap");
-
 function analysis_start() {
-  location.href = "result.html";
+  fetch("http://localhost:5000/final", {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  })
+    .then((res) => res.json())
+    .then((json) => {
+      alert("123");
+    });
 }
+function test() {
+  fetch("http://localhost:5000/final", {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  })
+    .then((res) => res.json())
+    .then((json) => {
+      alert("123");
+    });
+}
+
 // fetch("http://127.0.0.1:5500/templates/", {
 //   method: "GET",
 //   headers: {

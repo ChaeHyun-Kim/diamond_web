@@ -1,3 +1,3 @@
-function analysis_restart() {
-  location.href = "index.html";
-}
+// function analysis_restart() {
+//   location.href = "index.html";
+// }

@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+  <head profile="http://www.w3.org/2005/10/profile">
     <meta charset="utf-8" />
     <title>Diamond_ad</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
@@ -9,7 +9,7 @@
 
     <!-- Favicon -->
     <link href="../img/favicon.ico" rel="icon" />
-
+    <link rel="icon" type="image/png" href="http://example.com/myicon.png">
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -114,6 +114,7 @@
         <div class="container-xxl py-0" style="text-align: center">
           <div class="container py-1 px-lg-5">
             <!-- <h4 class="pb-2 px-5" style="float: left">광고내용 입력</h4> -->
+         
             <div
               style="
                 width: 90%;
@@ -124,6 +125,7 @@
               "
               class="py-3 SUIT-font form-control shadow"
             >
+            
               <h4 class="SUIT-font" style="float: left">
                 건강기능 식품과 일반식품 중, 허위/과대 광고로 의심되는 광고가 있으신가요
               </h4><h4 class="SUIT-font" style="float: left">광고 내용을
@@ -136,6 +138,7 @@
             </div>
           </div>
           <div class="container py-5 px-lg-5">
+            <form action="/final">
             <textarea
             input type="textarea"
               id="memo"
@@ -154,10 +157,10 @@
               placeholder="광고 내용을 입력해주세요"
             >{{ memo }}</textarea>
             <div class="text-center pt-5">
-              
-              <a
-                onclick="analysis_start()"
-                type="button"
+              <form action="/final">
+                <input  
+                type="submit"
+                value="분석시작"
                 class="SUIT-font btn px-9 py-3 btn-primary mt-0"
                 style="
                   font-size: x-large;
@@ -166,10 +169,12 @@
                   display: inline-block;
                   font-weight: bold;
                 "
-                >분석시작
-                </a>
+                >
+            </form>
             </div>
+          </form>
           </div>
+       
         </div>
       </div>
       <!-- main end -->
@@ -187,7 +192,7 @@
                 <div class="text-center p-4">
                   <img
                     class="img-fluid rounded-circle mb-4"
-                    src="../img/team1.jpg"
+                    src="static/img/team1.jpg"
                     alt=""
                   />
                   <h5>Kim Chaehyun</h5>
@@ -200,7 +205,7 @@
                 <div class="text-center p-4">
                   <img
                     class="img-fluid rounded-circle mb-4"
-                    src="../img/team2.jpg"
+                    src="static/img/team2.jpg"
                     alt=""
                   />
                   <h5>Kim Juhyun</h5>
@@ -213,7 +218,7 @@
                 <div class="text-center p-4">
                   <img
                     class="img-fluid rounded-circle mb-4"
-                    src="../img/team3.jpg"
+                    src="static/img/team3.jpg"
                     alt=""
                   />
                   <h5>Kwak Sojung</h5>
@@ -226,7 +231,7 @@
                 <div class="text-center p-4">
                   <img
                     class="img-fluid rounded-circle mb-4"
-                    src="../img/team4.jpg"
+                    src="static/img/team4.jpg"
                     alt=""
                   />
                   <h5>Oh Subin</h5>
@@ -249,9 +254,8 @@
                 <p class="section-title text-white h5 mb-4">
                   Project Introduction
                 </p>
-                <a class="btn btn-link" href=""></a>
                 <a class="btn btn-link" href="">About Us</a>
-                <a class="btn btn-link" href="">About Us</a>
+                <a class="btn btn-link" href="">About Topic</a>
               </div>
             </div>
           </div>

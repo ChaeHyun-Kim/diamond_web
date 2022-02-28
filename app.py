@@ -1,48 +1,35 @@
-from flask import Flask, render_template
-#  request
-# import pickle
-# import numpy as np
-# from tensorflow import keras
-# from keras.models import Sequential
-# from keras.layers import Dense
-# from keras.layers import Flatten
-# from keras.layers.convolutional import Conv2D
-# from keras.layers.convolutional import MaxPooling2D
-# from keras.preprocessing.image import ImageDataGenerator
+from flask import Flask, render_template, send_from_directory
+import tensorflow as tf
+import numpy as np
 
-# dir_path ='C://Users//kjh00//OneDrive//바탕 화면//크리마란- 산학연계//'
-# MODEL_NAME = 'lstm_best_model.h5'
-
-
-# model = keras.models.load_model(dir_path+MODEL_NAME)
-# model.summary()
 
 
 app = Flask(__name__)
+
+def predict():
+    model = tf.keras.models.load_model('model/lstm_best_model.h5')
+    return model.layers
+
+@app.route('/', methods=['GET'])
+def main():
+
+    return render_template('index.html')
+
+
+@app.route('/final', methods=['GET'])
+def home():
+    value = predict()
+    return render_template('result.html', memo=value)
+
+
+@app.route('/lib/<path:path>')
+def send_js(path):
+    return send_from_directory('lib', path)
 
 @app.route("/ping", methods=['GET'])
 def ping():
     return "통신 테스트"
 
-@app.route('/', methods=['GET'])
-def main():
-    value = 'hello, world'
-
-    return render_template('index.html', memo=value)
-
-
-@app.route('/final', methods=['GET'])
-def home():
-    value = 'hello, world123'
-    return render_template('result.html', memo=value)
-
 
 if __name__ == "__main__":
-    app.run(debug=True, port=5000)
-# from flask import Flask 
-# app = Flask(__name__) 
-# @app.route('/') 
-# def home(): 
-#     return 'Hello World' 
-# if __name__ == "__main__":
-#     app.run(host='0.0.0.0', port=5000)
+    app.run(debug=True, port=5000, host='0.0.0.0')

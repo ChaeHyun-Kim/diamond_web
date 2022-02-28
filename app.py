@@ -1,34 +1,30 @@
-from flask import Flask, render_template,request,redirect,url_for
-#  request
-# import pickle
-# import numpy as np
+
+from flask import Flask, render_template, send_from_directory,request,redirect,url_for
 import tensorflow as tf
-# from tensorflow import keras
-# from keras.models import Sequential
-# from keras.layers import Dense
-# from keras.layers import Flatten
-# from keras.layers.convolutional import Conv2D
-# from keras.layers.convolutional import MaxPooling2D
-# from keras.preprocessing.image import ImageDataGenerator
+import numpy as np
 
-# dir_path ='C://Users//kjh00//OneDrive//바탕 화면//크리마란- 산학연계//'
-# MODEL_NAME = 'lstm_best_model.h5'
-
-
-# model = keras.models.load_model(dir_path+MODEL_NAME)
-# model.summary()
 
 
 app = Flask(__name__)
-
-@app.route("/ping", methods=['GET'])
-def ping():
-    return "통신 테스트"
+# 채현시작
+# 모델 실행 함수
+def predict():
+    model = tf.keras.models.load_model('model/lstm_best_model.h5')
+    return model.layers
 
 @app.route('/', methods=['GET','POST'])
 def main():
     return render_template('index.html')
 
+@app.route('/final', methods=['GET'])
+def home():
+    value = predict()
+    return render_template('result.html', memo=value)
+
+#   
+  
+  
+# 주현시작
 @app.route('/method', methods=['GET','POST'])
 def method():
     if request.method=='GET':
@@ -46,13 +42,16 @@ def result(val):
     print("slsls")
     return render_template('result.html',memo1=val)
 
+# 주현끝
+
+@app.route('/lib/<path:path>')
+def send_js(path):
+    return send_from_directory('lib', path)
+
+@app.route("/ping", methods=['GET'])
+def ping():
+    return "통신 테스트"
+
 
 if __name__ == "__main__":
-    app.run(debug=True, port=5000)
-# from flask import Flask 
-# app = Flask(__name__) 
-# @app.route('/') 
-# def home(): 
-#     return 'Hello World' 
-# if __name__ == "__main__":
-#     app.run(host='0.0.0.0', port=5000)
+    app.run(debug=True, port=5000, host='0.0.0.0')

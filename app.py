@@ -2,15 +2,27 @@
 from flask import Flask, render_template, send_from_directory,request,redirect,url_for
 import tensorflow as tf
 import numpy as np
-
-
+import os
+import pickle
 
 app = Flask(__name__)
 # 채현시작
 # 모델 실행 함수
 def predict():
+    dir_path = '../model/'
+    MODEL_NAME = 'lstm_best_model2.h5'
+    MODEL_SAVE_PATH = os.path.join(dir_path, MODEL_NAME)
+
+    loaded_model = tf.keras.models.load_model(MODEL_SAVE_PATH)
+    with open(dir_path+'/'+'tokenizer.pickle', 'rb') as handle:
+        tokenizer = pickle.load(handle)
+    print("\n 테스트 정확도: %.4f" % (loaded_model.evaluate(X_test,y_test)[1]))
+
+
+
     model = tf.keras.models.load_model('model/lstm_best_model.h5')
-    return model.layers
+    result_m = model.sentiment_predict("아아 안녕하세요")
+    return result_m
 
 @app.route('/', methods=['GET','POST'])
 def main():
@@ -18,12 +30,10 @@ def main():
 
 @app.route('/final', methods=['GET'])
 def home():
-    value = predict()
-    return render_template('result.html', memo=value)
+    # values = predict()
+    return render_template('result.html', memo1=123)
+  
 
-#   
-  
-  
 # 주현시작
 @app.route('/method', methods=['GET','POST'])
 def method():
@@ -31,7 +41,7 @@ def method():
         val1=request.args['memo']
         dir_path = 'C:/Users/com/diamond_web/lstm_best_XAImodel.h5' #모델 불러오기
         loaded_model = tf.keras.models.load_model(dir_path)
-
+        # loaded_model.summary()
 
         return redirect(url_for('result',val=val1))
 

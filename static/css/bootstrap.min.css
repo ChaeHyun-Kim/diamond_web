@@ -1994,7 +1994,7 @@ textarea.form-control-lg {
 .form-select:focus {
   border-color: #4b89dc;
   outline: 0;
-  box-shadow: 0 0 0 0.25rem rgba(98, 34, 204, 0.25);
+  box-shadow: 0 0 0 0.25rem #ced4da;
 }
 .form-select[multiple],
 .form-select[size]:not([size="1"]) {
@@ -2053,12 +2053,12 @@ textarea.form-control-lg {
   filter: brightness(90%);
 }
 .form-check-input:focus {
-  border-color: #b191e6;
+  border-color: #000000;
   outline: 0;
   box-shadow: 0 0 0 0.25rem rgba(98, 34, 204, 0.25);
 }
 .form-check-input:checked {
-  background-color: #6222cc;
+  background-color: #000000;
   border-color: #6222cc;
 }
 .form-check-input:checked[type="checkbox"] {
@@ -2130,7 +2130,7 @@ textarea.form-control-lg {
   outline: 0;
 }
 .form-range:focus::-webkit-slider-thumb {
-  box-shadow: 0 0 0 1px #f6f4f9, 0 0 0 0.25rem rgba(98, 34, 204, 0.25);
+  box-shadow: 0 0 0 1px #f6f4f9, 0 0 0 0.25rem rgba(0, 0, 0, 0.25);
 }
 .form-range:focus::-moz-range-thumb {
   box-shadow: 0 0 0 1px #f6f4f9, 0 0 0 0.25rem rgba(98, 34, 204, 0.25);
@@ -2534,10 +2534,13 @@ textarea.form-control.is-invalid {
 .btn:hover {
   color: #726d7b;
 }
+/* 버튼 아웃라인 색 변경 */
 .btn-check:focus + .btn,
 .btn:focus {
+  /* background-color: #858585;
+  border-color: #858585; */
   outline: 0;
-  box-shadow: 0 0 0 0.25rem rgba(98, 34, 204, 0.25);
+  box-shadow: 0 0 0 0.25rem rgba(116, 116, 116, 0.25);
 }
 .btn:disabled,
 .btn.disabled,

@@ -9,10 +9,11 @@
     <meta content="" name="description" />
     
 
+    <script>console.log("result.html실행")</script>
     <script
-      language="JavaScript"
+      language="JavaScript"      
       type="text/javascript"
-      src="../static/js/result_js17.js"
+      src="../static/js/final4.js"
     ></script>
     <script src="//code.jquery.com/jquery-3.4.1.min.js"></script>
     <script>
@@ -207,20 +208,22 @@
           </div>
           <div class="container py-5 px-lg-5">
             <div class="text-center pt-5">
-              <form>
-                <input  
-                type="submit"
-                value="재분석하기"
-                class="SUIT-font btn px-9 py-3 btn-primary mt-0"
+              <button
+                id="start_btn"
+                onclick="restart();"
+                type="button"
                 style="
                   font-size: x-large;
                   color: white;
                   width: 40%;
                   display: inline-block;
                   font-weight: bold;
+                  background-color: #4b89dc;
                 "
-                >
-            </form>
+                class="SUIT-font btn px-9 py-3 mt-0"
+              >
+                재분석하기
+              </button>
             </div>
           </form>
           </div>

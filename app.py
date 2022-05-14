@@ -24,9 +24,13 @@ def final():
     
     return jsonify({"sentence": new_sentence, "predict_result":result})
 
-@app.route("/page_render", methods=["POST", "GET"])
-def page_render():
+@app.route("/result_render", methods=["POST", "GET"])
+def result_render():
     return render_template('result.html')
+    
+@app.route("/restart", methods=["POST", "GET"])
+def restart():
+    return render_template('index.html')
 
 @app.route('/team_info', methods=["POST", "GET"])
 def team_info():

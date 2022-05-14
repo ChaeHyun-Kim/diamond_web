@@ -7,7 +7,7 @@ function href_test() {
   location.href = "/page_render";
   console.log(" 되는거냐1111");
   setTimeout(function () {
-    console.log("wht ...");
+    console.log("대라대라아저씨");
   }, 5000);
 }
 

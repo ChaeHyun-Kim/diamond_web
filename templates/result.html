@@ -10,12 +10,28 @@
     
 
     <script>console.log("result.html실행")</script>
-    <script
-      language="JavaScript"      
-      type="text/javascript"
-      src="../static/js/final4.js"
-    ></script>
+ 
     <script src="//code.jquery.com/jquery-3.4.1.min.js"></script>
+    <style>
+    .false_sen{
+      color: #ff0000;
+      font-size: 15px;
+    }
+    .true_sen{
+      color: rgb(0, 0, 0);
+      font-size: 15px;
+    }
+    .false_result{
+      color: #ff0000;
+    }
+    .true_result{
+      color: rgb(0, 34, 255);
+    }
+    
+    
+    
+    
+    </style>
     <script>
 
       $(document).ready(function () {
@@ -45,7 +61,7 @@
       });
       </script>
     <script language="JavaScript" type="text/javascript" src="../static/js/main.js"></script>
-    
+  
 
     <!-- Favicon -->
     <link href="../img/favicon.ico" rel="icon" />
@@ -176,6 +192,7 @@
               id = "sentence_result"
               style="
                 resize: none;
+                overflow:auto;
                 width: 90%;
                 height: 270px;
                 color: #000;
@@ -185,10 +202,7 @@
                 text-align: left;
               "
               class="SUIT-font form-control shadow mb-4"
-            >
-            <label style="color: red;" >123</label>
-
-            </div>
+            ></div>
             <div
               style="
                 width: 90%;
@@ -200,8 +214,7 @@
               "
               class="py-3 SUIT-font form-control shadow"
             >
-              <h4 class="SUIT-font" style="color: #ff0000">
-                광고 분석 결과 들어가는 곳
+              <h4 id = "final_result" class="SUIT-font" style="color: #000000">
               </h4>
              
             </div>
@@ -263,6 +276,11 @@
     <!-- Footer End -->
 
     <!-- JavaScript Libraries -->
+    <script
+    language="JavaScript"      
+    type="text/javascript"
+    src="../static/js/predict9.js"
+  ></script>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="../lib/wow/wow.min.js"></script>

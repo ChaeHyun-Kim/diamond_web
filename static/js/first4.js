@@ -13,8 +13,8 @@ function predict_please() {
       ad: sentence,
     }), // converts js value to JSON string
   }).done(function (result) {
-    console.log(result);
-    localStorage.setItem("predict_result", JSON.stringify(result));
+    console.log("분석실행 결과", result);
+    localStorage.setItem("predict_result", JSON.stringify(result["완료"]));
     console.log("test:", JSON.parse(localStorage.getItem("predict_result")));
     location.href = "/result_render";
   });

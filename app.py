@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+import string
 from flask import Flask, jsonify, render_template, send_from_directory,request,redirect,url_for
 import tensorflow as tf
 import numpy as np
@@ -21,8 +22,8 @@ def final():
     print("입력데이터: ",jsonData)
     new_sentence = jsonData["ad"] 
     result = ad_predict(new_sentence)
-    
-    return jsonify({"sentence": new_sentence, "predict_result":result})
+    print("flask분석 완료", result)
+    return jsonify({"완료":result})
 
 @app.route("/result_render", methods=["POST", "GET"])
 def result_render():

@@ -1,10 +1,8 @@
 # -*- coding: utf-8 -*-
-from flask import Flask, render_template, send_from_directory,request,redirect,url_for
+from flask import Flask, jsonify, render_template, send_from_directory,request,redirect,url_for
 import tensorflow as tf
 import numpy as np
-import os
-import pickle
-import sys 
+
 from model.final_model import *
 
 from flask import request
@@ -19,15 +17,16 @@ def main():
 
 @app.route("/final", methods=["POST", "GET"])
 def final():
-    new_sentence = request.jsonify["ad"] 
+    jsonData=request.get_json()
+    print("입력데이터: ",jsonData)
+    new_sentence = jsonData["ad"] 
     result = ad_predict(new_sentence)
-    return render_template('result.html', sentence=new_sentence, predict_result=result)
+    
+    return jsonify({"sentence": new_sentence, "predict_result":result})
 
-
-@app.route("/test_final", methods=["POST", "GET"])
-def test_final():
-    new_sentence = request.form["sentence"] # 사용자가 전달한 값이 user 변수에 저장된다.
-    return render_template('result.html', predict_result=new_sentence)
+@app.route("/page_render", methods=["POST", "GET"])
+def page_render():
+    return render_template('result.html')
 
 @app.route('/team_info', methods=["POST", "GET"])
 def team_info():

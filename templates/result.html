@@ -7,8 +7,42 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <meta content="" name="keywords" />
     <meta content="" name="description" />
+    
 
-    <script language="JavaScript" type="text/javascript" src="../static/js/result.js"></script>
+    <script
+      language="JavaScript"
+      type="text/javascript"
+      src="../static/js/result_js16.js"
+    ></script>
+    <script src="//code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script>
+
+      $(document).ready(function () {
+        // html 페이지에서 'rel=tooltip'이 사용된 곳에 마우스를 가져가면
+        $("a[rel=tooltip]")
+          .mouseover(function (e) {
+            var tip = $(this).attr("title");
+      
+            // 브라우져에서 제공하는 기본 툴 팁을 끈다
+            $(this).attr("title", "");
+      
+            // css와 연동하기 위해 html 태그를 추가해줌
+            $(this).append(
+              '<div id="tooltip"><div class="tipBody">' + tip + "</div></div>"
+            );
+          })
+          .mousemove(function (e) {
+            //마우스가 움직일 때 툴 팁이 따라 다니도록 위치값 업데이트
+            $("#tooltip").css("top", e.pageY );
+            $("#tooltip").css("left", e.pageX );
+          })
+          .mouseout(function () {
+            //위에서 껐던 브라우져에서 제공하는 기본 툴 팁을 복원
+            $(this).attr("title", $(".tipBody").html());
+            $(this).children("div#tooltip").remove();
+          });
+      });
+      </script>
     <script language="JavaScript" type="text/javascript" src="../static/js/main.js"></script>
     
 
@@ -99,11 +133,21 @@
       .SUIT-font {
         font-family: "SUIT-Medium", sans-serif; /*웹 폰트 지정*/
       }
+      /* 툴팁 스타일 */
+    #tooltip {
+    position: absolute;
+    z-index: 999;
+    color: rgb(10, 10, 10);
+    font-size: 15px;   
+    }
+    #tooltip .tipBody {
+        background-color: rgb(255, 187, 187);
+        padding: 8px;
+    }
     </style> 
-      <script>
-      
+      <!-- <script>
       var paramValue =request.getParameter('value');  
-      </script>
+      </script> -->
   </head>
 
   <body>
@@ -123,10 +167,12 @@
         <!-- main start -->
         <div class="container-xxl py-0" style="text-align: center">
           <div class="container py-1 px-lg-5">
-
+            <a rel="tooltip" title="123456789">
+              mouse over here
+            </a>
             <!-- <h4 class="pb-2 px-5" style="float: left">광고내용 입력</h4> -->
             <div
-
+              id = "sentence_result"
               style="
                 resize: none;
                 width: 90%;
@@ -139,9 +185,7 @@
               "
               class="SUIT-font form-control shadow mb-4"
             >
-
-              <!-- {{ sentence }} -->
-              {{predict_result}}
+            <label style="color: red;" >123</label>
 
             </div>
             <div
@@ -156,14 +200,14 @@
               class="py-3 SUIT-font form-control shadow"
             >
               <h4 class="SUIT-font" style="color: #ff0000">
-                이 광고는 {{predict_result[2]}}% 확률로 {{predict_result[1]}}광고 입니다.
+                광고 분석 결과 들어가는 곳
               </h4>
              
             </div>
           </div>
           <div class="container py-5 px-lg-5">
             <div class="text-center pt-5">
-              <form action="/">
+              <form>
                 <input  
                 type="submit"
                 value="재분석하기"

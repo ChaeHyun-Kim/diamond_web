@@ -10,7 +10,7 @@
     <script
       language="JavaScript"
       type="text/javascript"
-      src="../static/js/ad_result.js"
+      src="../static/js/result_js16.js"
     ></script>
 
     <!-- Favicon -->
@@ -103,6 +103,18 @@
         font-family: "SUIT-Medium", sans-serif; /*웹 폰트 지정*/
       }
     </style>
+    <style>
+      .image_full {
+        max-width: 100%;
+        max-height: 100%;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        overflow: auto;
+        position: fixed;
+      }
+    </style>
   </head>
 
   <body style="background-color: #76aef82e">
@@ -148,11 +160,15 @@
               </h5>
             </div>
           </div>
+
+          <!-- <img src="../static/img/pred_ing.PNG" class="image_full" /> -->
+          <!-- 가운데 정렬 필요 -->
           <div class="container pb-5 px-lg-5">
             <div class="text-center pt-5">
               <form name="form">
                 <p>
                   <textarea
+                    id="input_text"
                     type="text"
                     style="
                       resize: none;
@@ -171,10 +187,9 @@
                     autocomplete="off"
                   ></textarea>
                 </p>
-                <p>
-                  <!-- <input
-                    type="button"
-                    onClick="predict_please()"
+                <!-- <p>
+                  <input
+                    type="submit"
                     style="
                       font-size: x-large;
                       color: white;
@@ -185,14 +200,14 @@
                     "
                     class="SUIT-font btn px-9 py-3 mt-0"
                     value="분석시작"
-                  /> -->
-                </p>
+                  />
+                </p> -->
               </form>
-
+              <div id="testdiv"></div>
               <button
                 id="start_btn"
+                onclick="page_open();"
                 type="button"
-                onclick="predict_please();"
                 style="
                   font-size: x-large;
                   color: white;

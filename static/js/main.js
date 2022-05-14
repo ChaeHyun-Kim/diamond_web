@@ -1,6 +1,7 @@
 window.onload = function () {
-  console.log("mat- 안되는거야!!");
+  console.log("this is main_js");
 };
+
 (function ($) {
   "use strict";
 
@@ -15,7 +16,9 @@ window.onload = function () {
   spinner();
 
   // Initiate the wowjs
-  new WOW().init();
+  $(document).ready(function () {
+    new WOW().init();
+  });
 
   // Sticky Navbar
   $(window).scroll(function () {

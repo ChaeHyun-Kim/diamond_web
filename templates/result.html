@@ -7,6 +7,44 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <meta content="" name="keywords" />
     <meta content="" name="description" />
+    
+
+    <script
+      language="JavaScript"
+      type="text/javascript"
+      src="../static/js/result_js16.js"
+    ></script>
+    <script src="//code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script>
+
+      $(document).ready(function () {
+        // html 페이지에서 'rel=tooltip'이 사용된 곳에 마우스를 가져가면
+        $("a[rel=tooltip]")
+          .mouseover(function (e) {
+            var tip = $(this).attr("title");
+      
+            // 브라우져에서 제공하는 기본 툴 팁을 끈다
+            $(this).attr("title", "");
+      
+            // css와 연동하기 위해 html 태그를 추가해줌
+            $(this).append(
+              '<div id="tooltip"><div class="tipBody">' + tip + "</div></div>"
+            );
+          })
+          .mousemove(function (e) {
+            //마우스가 움직일 때 툴 팁이 따라 다니도록 위치값 업데이트
+            $("#tooltip").css("top", e.pageY );
+            $("#tooltip").css("left", e.pageX );
+          })
+          .mouseout(function () {
+            //위에서 껐던 브라우져에서 제공하는 기본 툴 팁을 복원
+            $(this).attr("title", $(".tipBody").html());
+            $(this).children("div#tooltip").remove();
+          });
+      });
+      </script>
+    <script language="JavaScript" type="text/javascript" src="../static/js/main.js"></script>
+    
 
     <!-- Favicon -->
     <link href="../img/favicon.ico" rel="icon" />
@@ -39,6 +77,8 @@
 
     <!-- Template Stylesheet -->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <!-- Template Javascript -->
+
     <!--font!-->
     <style>
       @font-face {
@@ -93,11 +133,21 @@
       .SUIT-font {
         font-family: "SUIT-Medium", sans-serif; /*웹 폰트 지정*/
       }
+      /* 툴팁 스타일 */
+    #tooltip {
+    position: absolute;
+    z-index: 999;
+    color: rgb(10, 10, 10);
+    font-size: 15px;   
+    }
+    #tooltip .tipBody {
+        background-color: rgb(255, 187, 187);
+        padding: 8px;
+    }
     </style> 
-      <script>
-      
+      <!-- <script>
       var paramValue =request.getParameter('value');  
-      </script>
+      </script> -->
   </head>
 
   <body>
@@ -108,7 +158,7 @@
           class="navbar navbar-expand-lg navbar-light px-4 px-lg-5 py-3 py-lg-0"
         >
           <a href="" class="navbar-brand py-4 px-4 p-0">
-            <h1 class="Gmk-font m-0">허위과대광고 판별</h1>
+            <h1 class="Gmk-font m-0">허위과대광고 판별기</h1>
           </a>
         </nav>
 
@@ -117,10 +167,12 @@
         <!-- main start -->
         <div class="container-xxl py-0" style="text-align: center">
           <div class="container py-1 px-lg-5">
-
+            <a rel="tooltip" title="123456789">
+              mouse over here
+            </a>
             <!-- <h4 class="pb-2 px-5" style="float: left">광고내용 입력</h4> -->
             <div
-
+              id = "sentence_result"
               style="
                 resize: none;
                 width: 90%;
@@ -133,8 +185,7 @@
               "
               class="SUIT-font form-control shadow mb-4"
             >
-
-              {{ memo1 }}
+            <label style="color: red;" >123</label>
 
             </div>
             <div
@@ -149,17 +200,14 @@
               class="py-3 SUIT-font form-control shadow"
             >
               <h4 class="SUIT-font" style="color: #ff0000">
-                이 광고는 98.12% 확률로 허위광고 입니다.
+                광고 분석 결과 들어가는 곳
               </h4>
-              <h5 id="test "class="SUIT-font" style="color: #424242">
-                발달, 보호, 정상, 수준 키워드가 허위광고라고 판별하는 데에
-                영향을 끼쳤습니다.
-              </h5>
+             
             </div>
           </div>
           <div class="container py-5 px-lg-5">
             <div class="text-center pt-5">
-              <form action="/">
+              <form>
                 <input  
                 type="submit"
                 value="재분석하기"
@@ -181,90 +229,35 @@
       </div>
       <!-- main end -->
 
-      <!-- Team Start -->
-      <div class="container-xxl py-5 bg-white">
-        <div class="container py-5 px-lg-5">
-          <div class="wow fadeInUp" data-wow-delay="0.1s">
-            <p class="section-title text-secondary justify-content-center"></p>
-            <h1 class="text-center mb-5">Our Team Members</h1>
-          </div>
-          <div class="row g-4">
-            <div class="col-lg-3 col-md-5 wow fadeInUp" data-wow-delay="0.1s">
-              <div class="team-item bg-light rounded">
-                <div class="text-center p-4">
-                  <img
-                    class="img-fluid rounded-circle mb-4"
-                    src="static/img/team1.jpg"
-                    alt=""
-                  />
-                  <h5>Kim Chaehyun</h5>
-                  <span>CEO & Founder</span>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-3 col-md-5 wow fadeInUp" data-wow-delay="0.3s">
-              <div class="team-item bg-light rounded">
-                <div class="text-center p-4">
-                  <img
-                    class="img-fluid rounded-circle mb-4"
-                    src="static/img/team2.jpg"
-                    alt=""
-                  />
-                  <h5>Kim Juhyun</h5>
-                  <span>Web Designer</span>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-3 col-md-5 wow fadeInUp" data-wow-delay="0.5s">
-              <div class="team-item bg-light rounded">
-                <div class="text-center p-4">
-                  <img
-                    class="img-fluid rounded-circle mb-4"
-                    src="static/img/team3.jpg"
-                    alt=""
-                  />
-                  <h5>Kwak Sojung</h5>
-                  <span>SEO Expert</span>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-3 col-md-5 wow fadeInUp" data-wow-delay="0.5s">
-              <div class="team-item bg-light rounded">
-                <div class="text-center p-4">
-                  <img
-                    class="img-fluid rounded-circle mb-4"
-                    src="static/img/team4.jpg"
-                    alt=""
-                  />
-                  <h5>Oh Subin</h5>
-                  <span>SEO Expert</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- Team End -->
+    <!-- Team Start -->
 
-        <!-- Footer Start -->
-        <div
-          class="container-fluid bg-primary text-light footer wow fadeIn"
-          data-wow-delay="0.1s"
-        >
-          <div class="container py-5 px-lg-5">
-            <div class="row g-5">
-              <div class="col-md-6 col-lg-3">
-                <p class="section-title text-white h5 mb-4">
-                  Project Introduction
-                </p>
-                <a class="btn btn-link" href="">About Us</a>
-                <a class="btn btn-link" href="">About Topic</a>
-              </div>
+    <div class="container-xxl bg-white">
+      <div class="container py-5 px-lg-5">
+        <div class="row g-4"></div>
+      </div>
+      <!-- Team End -->
+
+      <!-- Footer Start -->
+      <div
+        class="container-fluid bg-primary text-light footer wow fadeIn"
+        data-wow-delay="0.1s"
+      >
+        <div class="container py-5 px-lg-5">
+          <div class="row g-5">
+            <div class="col-md-6 col-lg-3">
+              <p class="section-title text-white h5 mb-4">
+                Project Introduction
+              </p>
+
+              <a class="btn btn-link" href="/team_info">About Us</a>
+              <a class="btn btn-link" href="/topic_info">About Topic</a>
             </div>
           </div>
-          <div class="container px-lg-5"></div>
         </div>
+        <div class="container px-lg-5"></div>
       </div>
-      <!-- Footer End -->
+    </div>
+    <!-- Footer End -->
 
     <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
@@ -277,13 +270,6 @@
     <script src="../lib/isotope/isotope.pkgd.min.js"></script>
     <script src="../lib/lightbox/js/lightbox.min.js"></script>
 
-    <!-- Template Javascript -->
-    <script src="../static/js/main.js"></script>
-    <script
 
-      language="JavaScript"
-      src="../static/js/result.js"
-      charset=" EUC-KR "
-    ></script>
   </body>
 </html>

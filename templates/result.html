@@ -15,11 +15,11 @@
     <style>
     .false_sen{
       color: #ff0000;
-      font-size: 15px;
+      font-size: 20px;
     }
     .true_sen{
       color: rgb(0, 0, 0);
-      font-size: 15px;
+      font-size: 20px;
     }
     .false_result{
       color: #ff0000;
@@ -27,16 +27,12 @@
     .true_result{
       color: rgb(0, 34, 255);
     }
-    
-    
-    
-    
     </style>
     <script>
 
       $(document).ready(function () {
         // html 페이지에서 'rel=tooltip'이 사용된 곳에 마우스를 가져가면
-        $("a[rel=tooltip]")
+        $("label[rel=tooltip]")
           .mouseover(function (e) {
             var tip = $(this).attr("title");
       
@@ -50,8 +46,8 @@
           })
           .mousemove(function (e) {
             //마우스가 움직일 때 툴 팁이 따라 다니도록 위치값 업데이트
-            $("#tooltip").css("top", e.pageY );
-            $("#tooltip").css("left", e.pageX );
+            $("#tooltip").css("top", e.pageY +10);
+            $("#tooltip").css("left", e.pageX +5);
           })
           .mouseout(function () {
             //위에서 껐던 브라우져에서 제공하는 기본 툴 팁을 복원
@@ -155,7 +151,7 @@
     position: absolute;
     z-index: 999;
     color: rgb(10, 10, 10);
-    font-size: 15px;   
+    font-size: 20px;   
     }
     #tooltip .tipBody {
         background-color: rgb(255, 187, 187);
@@ -167,7 +163,7 @@
       </script> -->
   </head>
 
-  <body>
+  <body style="background-color: #76aef82e">
     <div class="container-xxl p-0" style="background-color: #fff">
       <!-- Navbar & Hero Start -->
       <div class="container-xxl position-relative p-0">
@@ -184,9 +180,7 @@
         <!-- main start -->
         <div class="container-xxl py-0" style="text-align: center">
           <div class="container py-1 px-lg-5">
-            <a rel="tooltip" title="123456789">
-              mouse over here
-            </a>
+       
             <!-- <h4 class="pb-2 px-5" style="float: left">광고내용 입력</h4> -->
             <div
               id = "sentence_result"
@@ -198,6 +192,7 @@
                 color: #000;
                 border-radius: 7;
                 display: inline-block;
+                word-break:  keep-all ;
                 background-color: #efefef;
                 text-align: left;
               "
@@ -214,15 +209,15 @@
               "
               class="py-3 SUIT-font form-control shadow"
             >
-              <h4 id = "final_result" class="SUIT-font" style="color: #000000">
-              </h4>
+              <h3 id = "final_result" class="SUIT-font" style="color: #000000">
+              </h3>
              
             </div>
           </div>
           <div class="container py-5 px-lg-5">
             <div class="text-center pt-5">
               <button
-                id="start_btn"
+                id="restart_btn"
                 onclick="restart();"
                 type="button"
                 style="
@@ -279,7 +274,7 @@
     <script
     language="JavaScript"      
     type="text/javascript"
-    src="../static/js/predict9.js"
+    src="../static/js/predict18.js"
   ></script>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>

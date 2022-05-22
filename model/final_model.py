@@ -362,12 +362,12 @@ def ad_predict(ad):
           danger_value.append(danger.loc[i, "위험도"])
       sys.displayhook(danger.loc[:,['위험 문장', '위험도']])
       # 문장 길이, 허위/허용, 확률, 문장단위 분류리스트, 위험문장의 인덱스,위험문장의 위험도값
-      return [ len(ad_df), "허위", round((danger['위험도'].mean()) * 100, 2), splited_ad, danger_index,danger_value, nan]
+      return [ len(ad_df), "허위", round((danger['위험도'].mean()) * 100, 2), splited_ad, danger_index,danger_value, "X"]
 
     else:
       print("\n최종 예측 결과 : 해당 광고는 {:.2f}% 확률로 허용광고입니다.\n".format(safety['score'].mean() * 100))
       # 문장 길이, 허용/허위, 확률, 문장단위 분류리스트, 위험문장 인덱스 X, 위험문장의 위험도값 X
-      return [ len(ad_df), "허용", round((safety['score'].mean()) * 100, 2), splited_ad, nan, nan, ad ]
+      return [ len(ad_df), "허용", round((safety['score'].mean()) * 100, 2), splited_ad, "X", "X", ad ]
 
   #문장이 1개
   else:
@@ -377,7 +377,7 @@ def ad_predict(ad):
     if(ad_df.loc[0,'score'] > 0.5):
       print("\n최종 예측 결과 : 해당 광고는 {:.2f}% 확률로 허용광고입니다.\n".format(ad_df['score'][0] * 100))
       # 문장 길이, 허위/허용, 확률, 문장단위 분류리스트, 위험문장의 인덱스,위험문장의 위험도값
-      return[len(ad_df),"허용",round(ad_df['score'][0] * 100, 2), splited_ad, 0, danger_index, nan ]
+      return[len(ad_df),"허용",round(ad_df['score'][0] * 100, 2), splited_ad, 0, danger_index, "X" ]
     else:
       ad_df['score'] = 1-ad_df['score']
       print("\n최종 예측 결과 : 다음 문장 때문에 해당 광고는 {:.2f}% 확률로 허위광고입니다.\n".format((ad_df['score'][0]) * 100))
@@ -385,7 +385,7 @@ def ad_predict(ad):
       ad_df.rename(columns = {'score':'위험도'}, inplace = True)
       sys.displayhook(ad_df.loc[:,['위험 문장', '위험도']])
       # 문장 길이, 허용/허위, 확률, 문장단위 분류리스트, 위험문장 인덱스 X, 위험문장의 위험도값 X
-      return [len(ad_df),"허위",round(ad_df['위험도'][0]* 100, 2), splited_ad, nan, nan, ad ]
+      return [len(ad_df),"허위",round(ad_df['위험도'][0]* 100, 2), splited_ad, "X", "X", ad ]
 
 
 

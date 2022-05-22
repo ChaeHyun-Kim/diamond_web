@@ -28,6 +28,7 @@ function true_sen_tag(sen) {
   let senten = document.createElement("label");
   senten.innerHTML = sen;
   senten.setAttribute("class", "true_sen");
+  console.log(senten);
   sen_box.appendChild(senten);
 }
 
@@ -37,7 +38,13 @@ function false_sen_tag(sen, sen_value) {
   senten.innerHTML = sen;
   senten.setAttribute("class", "false_sen");
   senten.setAttribute("rel", "tooltip");
-  senten.setAttribute("title", Math.round(sen_value * 100, 2));
+  senten.setAttribute(
+    "title",
+    "해당 문장의 위험도는  " +
+      String(Math.round(sen_value * 100, 2)) +
+      "입니다."
+  );
+  console.log(senten);
   sen_box.appendChild(senten);
 }
 function false_result_tag(result_value) {
@@ -45,7 +52,7 @@ function false_result_tag(result_value) {
   let result = document.createElement("h4");
   result.setAttribute("class", "false_result");
   result.innerHTML =
-    "해당 광고는 " + String(result_value) + "의 정확도로 허위/과대광고입니다.";
+    "해당 광고는 " + String(result_value) + "의 정확도로 허위·과대광고입니다.";
   result_box.appendChild(result);
 }
 

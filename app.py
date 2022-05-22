@@ -22,8 +22,7 @@ def final():
     print("입력데이터: ",jsonData)
     new_sentence = jsonData["ad"] 
     result = ad_predict(new_sentence)
-    print("flask분석 완료", result)
-    return jsonify({"완료":result})
+    return jsonify(result)
 
 @app.route("/result_render", methods=["POST", "GET"])
 def result_render():

@@ -32,10 +32,11 @@ from more_itertools import locate
 """# **전처리**"""
 
 #matplolib -> html
-import json
-import mpld3
+# import json
+# import mpld3
 
 # 중복 제거
+
 
 def duplicatesRemove(data) :
   data.drop_duplicates(subset = ['광고내용'], inplace=True) # document 열에서 중복인 내용이 있다면 중복 제거
@@ -252,53 +253,54 @@ def make_plot(test_df, test_li, number, standard_score):
         b_color ='mistyrose'
         t_color = "red"
 
-    # fig = plt.figure(figsize=(15,3),facecolosr=b_color)
+    plt.figure(figsize=(20,5),facecolor=b_color)
     for k in range(len(test_df.loc[number,'ko_processing'])):
         s = test_df.loc[number,'ko_processing'][k]
         k1=len(impact_columns)+k-len(test_df.loc[number,'ko_processing'])
         va = round(float(impact_columns[k1][0][0]),2)
-    #     if va > 0.5:
-    #         font1 = {'family':best_font,
-    #             'color':  'darkblue',
-    #             'weight': 'normal',
-    #             'size': 16}
-    #     elif va< -0.3:
-    #         font1 = {'family':best_font,
-    #             'color':  'red',
-    #             'weight': 'normal',
-    #             'size': 16}
+        if va > 0.5:
+            font1 = {'family':best_font,
+                'color':  'darkblue',
+                'weight': 'normal',
+                'size': 16}
+        elif va< -0.3:
+            font1 = {'family':best_font,
+                'color':  'red',
+                'weight': 'normal',
+                'size': 16}
 
-    #     else:
-    #         font1 = {'family':best_font,
-    #             'color':  'black',
-    #             'weight': 'normal',
-    #             'size': 16}
+        else:
+            font1 = {'family':best_font,
+                'color':  'black',
+                'weight': 'normal',
+                'size': 16}
 
 
-    #     if k < 17:
-    #         plt.rcParams['axes.unicode_minus'] =False
-    #         plt.rc('font', family='NanumGothic')
-    #         plt.text(s=s, x=k*0.7, y=0,fontdict=font1,va='center',ha='center')
-    #         plt.text(s=va,x=k*0.7, y=-0.1,fontdict=font1,va='center',ha='center')
-    #     elif k < 34:
-    #         plt.rcParams['axes.unicode_minus'] =False
-    #         plt.rc('font', family='NanumGothic')
-    #         plt.text(s=s, x=k*0.7 - 17*0.7, y=-0.2,fontdict=font1,va='center',ha='center')
-    #         plt.text(s=va,x=k*0.7- 17*0.7, y=-0.3,fontdict=font1,va='center',ha='center')
-    #     else:
-    #         plt.rcParams['axes.unicode_minus'] =False
-    #         plt.rc('font', family='NanumGothic')
-    #         plt.text(s=s, x=k*0.7 - 34*0.7, y=-0.4,fontdict=font1,va='center',ha='center')
-    #         plt.text(s=va,x=k*0.7- 34*0.7, y=-0.5,fontdict=font1,va='center',ha='center')   
+        if k < 17:
+            plt.rcParams['axes.unicode_minus'] =False
+            plt.rc('font', family='NanumGothic')
+            plt.text(s=s, x=k*0.9, y=0,fontdict=font1,va='center',ha='center')
+            plt.text(s=va,x=k*0.9, y=-0.1,fontdict=font1,va='center',ha='center')
+        elif k < 34:
+            plt.rcParams['axes.unicode_minus'] =False
+            plt.rc('font', family='NanumGothic')
+            plt.text(s=s, x=k*0.9 - 17*0.9, y=-0.2,fontdict=font1,va='center',ha='center')
+            plt.text(s=va,x=k*0.9- 17*0.9, y=-0.3,fontdict=font1,va='center',ha='center')
+        else:
+            plt.rcParams['axes.unicode_minus'] =False
+            plt.rc('font', family='NanumGothic')
+            plt.text(s=s, x=k*0.9 - 34*0.9, y=-0.4,fontdict=font1,va='center',ha='center')
+            plt.text(s=va,x=k*0.9- 34*0.9, y=-0.5,fontdict=font1,va='center',ha='center')   
 
-    # plt.xlim(0,8)
-    # plt.ylim(-0.5,0.1)
-    # plt.axis('off')
-    # plt.title(ment, size = 20, color = t_color, pad = 15)
-    # f = plt.show()
+    plt.xlim(-0.5,15)
+    plt.ylim(-0.5,0.1)
+    plt.axis('off')
+    plt.title(ment, size = 20, color = t_color, pad = 15)
+    # plt.show()
    
-    # print("문장별 위험도 : {:.3f}".format(1-score))
-    # return mpld3.fig_to_html(f, figid='THIS_IS_FIGID')
+    print("문장별 위험도 : {:.3f}".format(1-score))
+    plt.savefig('static\img\image\image_{}.png'.format(number))
+    #return mpld3.fig_to_html(f, figid='sent_{}'.format(number))
  
 
 
@@ -311,7 +313,7 @@ def ad_predict(ad):
   danger_index=[]
   li = []
   danger_value =[]
-  # plot_li = []
+  #plot_li = []
   splited_ad=kss.split_sentences(ad)
   #맞춤법+전처리
   
@@ -340,6 +342,10 @@ def ad_predict(ad):
   for sen in ad_df['문장']:
     print("문장"+str(num)+" : " + sen)
     num += 1
+
+  if os.path.exists("static\img\image"):
+    for file in os.scandir("static\img\image"):
+      os.remove(file.path)
 
   #문장이 2개 이상
   if len(ad_df)>1:

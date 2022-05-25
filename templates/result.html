@@ -8,8 +8,6 @@
     <meta content="" name="keywords" />
     <meta content="" name="description" />
     
-
-    <script>console.log("result.html실행")</script>
  
     <script src="//code.jquery.com/jquery-3.4.1.min.js"></script>
     <style>
@@ -46,8 +44,8 @@
           })
           .mousemove(function (e) {
             //마우스가 움직일 때 툴 팁이 따라 다니도록 위치값 업데이트
-            $("#tooltip").css("top", e.pageY +10);
-            $("#tooltip").css("left", e.pageX +5);
+            $("#tooltip").css("top", e.pageY+10);
+            $("#tooltip").css("left", e.pageX-15);
           })
           .mouseout(function () {
             //위에서 껐던 브라우져에서 제공하는 기본 툴 팁을 복원
@@ -143,8 +141,23 @@
       .Gmk-font {
         font-family: "GmarketSansBold", sans-serif; /*웹 폰트 지정*/
       }
-      .SUIT-font {
-        font-family: "SUIT-Medium", sans-serif; /*웹 폰트 지정*/
+      .nanum-font1 {
+        font-family: "NanumSquare", san-serif;
+        font-weight: 800;
+        font-size: 23px;
+        line-height: 1.2;
+      }
+      .nanum-font2 {
+        font-family: "NanumSquare", san-serif;
+        font-weight: 800;
+        font-size: 23px;
+        line-height: 1.2;
+      }
+      .nanum-font3 {
+        font-family: "NanumSquare", san-serif;
+        font-weight: 400;
+        font-size: 23px;
+        line-height: 1.2;
       }
       /* 툴팁 스타일 */
     #tooltip {
@@ -196,7 +209,7 @@
                 background-color: #efefef;
                 text-align: left;
               "
-              class="SUIT-font form-control shadow mb-4"
+              class="nanum-font1 form-control shadow mb-4"
             ></div>
             <div
               style="
@@ -207,9 +220,9 @@
                 display: inline-block;
                 text-align: left;
               "
-              class="py-3 SUIT-font form-control shadow"
+              class="py-3 nanum-font1 form-control shadow"
             >
-              <h3 id = "final_result" class="SUIT-font" style="color: #000000">
+              <h3 id = "final_result" class="nanum-font2" style="color: #000000">
               </h3>
              
             </div>
@@ -228,7 +241,7 @@
                   font-weight: bold;
                   background-color: #4b89dc;
                 "
-                class="SUIT-font btn px-9 py-3 mt-0"
+                class="nanum-font1 btn px-9 py-3 mt-0"
               >
                 재분석하기
               </button>
@@ -274,7 +287,7 @@
     <script
     language="JavaScript"      
     type="text/javascript"
-    src="../static/js/predict18.js"
+    src="../static/js/predict.js"
   ></script>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>

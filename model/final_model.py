@@ -31,6 +31,10 @@ from more_itertools import locate
 
 """# **전처리**"""
 
+#matplolib -> html
+import json
+import mpld3
+
 # 중복 제거
 
 def duplicatesRemove(data) :
@@ -119,7 +123,7 @@ import matplotlib.pyplot as plt
 
 MODEL_NAME = 'model/diamond_model.h5'
 
-from tensorflow.keras.models import Sequential
+# from tensorflow.keras.models import Sequential
 
 from keras.models import load_model
 
@@ -291,8 +295,10 @@ def make_plot(test_df, test_li, number, standard_score):
     # plt.ylim(-0.5,0.1)
     # plt.axis('off')
     # plt.title(ment, size = 20, color = t_color, pad = 15)
-    # plt.show()
-    print("문장별 위험도 : {:.3f}".format(1-score))
+    # f = plt.show()
+   
+    # print("문장별 위험도 : {:.3f}".format(1-score))
+    # return mpld3.fig_to_html(f, figid='THIS_IS_FIGID')
  
 
 
@@ -305,6 +311,7 @@ def ad_predict(ad):
   danger_index=[]
   li = []
   danger_value =[]
+  # plot_li = []
   splited_ad=kss.split_sentences(ad)
   #맞춤법+전처리
   
@@ -340,6 +347,7 @@ def ad_predict(ad):
     print("\n\n문장 별 예측 결과")
     for i in range(len(ad_df)):
       make_plot(ad_df, input, i, 0.5)
+      #plot_li.append(make_plot(ad_df, input, i, 0.5))
 
 
 
@@ -377,7 +385,7 @@ def ad_predict(ad):
     if(ad_df.loc[0,'score'] > 0.5):
       print("\n최종 예측 결과 : 해당 광고는 {:.2f}% 확률로 허용광고입니다.\n".format(ad_df['score'][0] * 100))
       # 문장 길이, 허위/허용, 확률, 문장단위 분류리스트, 위험문장의 인덱스,위험문장의 위험도값
-      return[len(ad_df),"허용",round(ad_df['score'][0] * 100, 2), splited_ad, 0, danger_index, "X" ]
+      return[len(ad_df),"허용",round(ad_df['score'][0] * 100, 2), splited_ad, "X", "X",ad ]
     else:
       ad_df['score'] = 1-ad_df['score']
       print("\n최종 예측 결과 : 다음 문장 때문에 해당 광고는 {:.2f}% 확률로 허위광고입니다.\n".format((ad_df['score'][0]) * 100))
@@ -385,7 +393,7 @@ def ad_predict(ad):
       ad_df.rename(columns = {'score':'위험도'}, inplace = True)
       sys.displayhook(ad_df.loc[:,['위험 문장', '위험도']])
       # 문장 길이, 허용/허위, 확률, 문장단위 분류리스트, 위험문장 인덱스 X, 위험문장의 위험도값 X
-      return [len(ad_df),"허위",round(ad_df['위험도'][0]* 100, 2), splited_ad, "X", "X", ad ]
+      return [len(ad_df),"허위",round(ad_df['위험도'][0]* 100, 2), splited_ad, [0],[ad_df['위험도'][0]], "x" ]
 
 
 

@@ -10,7 +10,7 @@
     <script
       language="JavaScript"
       type="text/javascript"
-      src="../static/js/first29.js"
+      src="../static/js/first.js"
       defer
     ></script>
 
@@ -51,6 +51,7 @@
 
     <!--font!-->
     <style>
+      @import url("https://cdn.rawgit.com/moonspam/NanumSquare/master/nanumsquare.css");
       @font-face {
         font-family: "EliceDigitalBaeum_Bold";
         src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2105_2@1.0/EliceDigitalBaeum_Bold.woff")
@@ -100,8 +101,23 @@
       .Gmk-font {
         font-family: "GmarketSansBold", sans-serif; /*웹 폰트 지정*/
       }
-      .SUIT-font {
-        font-family: "SUIT-Medium", sans-serif; /*웹 폰트 지정*/
+      .nanum-font1 {
+        font-family: "NanumSquare", san-serif;
+        font-weight: 1000;
+        font-size: 23px;
+        line-height: 1.2;
+      }
+      .nanum-font2 {
+        font-family: "NanumSquare", san-serif;
+        font-weight: 800;
+        font-size: 23px;
+        line-height: 1.2;
+      }
+      .nanum-font3 {
+        font-family: "NanumSquare", san-serif;
+        font-weight: 400;
+        font-size: 23px;
+        line-height: 1.2;
       }
     </style>
     <style>
@@ -155,16 +171,16 @@
                 border-radius: 7;
                 display: inline-block;
               "
-              class="pt-3 SUIT-font form-control shadow"
+              class="pt-4 nanum-font1 form-control shadow"
             >
-              <h4 class="SUIT-font" style="float: left">
+              <h4 class="nanum-font1" style="float: left">
                 허위·과대광고로 의심되는 광고가 있으신가요?
               </h4>
-              <h4 class="SUIT-font" style="float: left">
+              <h4 class="nanum-font1" style="float: left">
                 건강기능 식품과 일반식품의 광고 내용을 입력하여 허위·과대광고
                 유무와 판별 이유를 확인해보세요!
               </h4>
-              <h5 class="SUIT-font" style="color: #696969; float: left">
+              <h5 class="nanum-font2" style="color: #696969; float: left">
                 허위·과대광고 판별기는 광고내용을 까다롭게 판별하여 더욱 건강한
                 식품을 소비를 독려합니다.
               </h5>
@@ -190,7 +206,7 @@
                       font-size: 20px;
                       background-color: #efefef;
                     "
-                    class="SUIT-font mb-5 form-control shadow"
+                    class="nanum-font3 mb-5 form-control shadow"
                     name="sentence"
                     type="text"
                     placeholder="광고 내용을 입력해주세요"
@@ -211,7 +227,7 @@
                   font-weight: bold;
                   background-color: #4b89dc;
                 "
-                class="SUIT-font btn px-9 py-3 mt-0"
+                class="nanum-font1 btn px-9 py-3 mt-0"
               >
                 분석시작
               </button>

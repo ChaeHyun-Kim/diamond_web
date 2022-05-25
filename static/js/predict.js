@@ -24,6 +24,7 @@ function display_result() {
 }
 
 function true_sen_tag(sen) {
+  console.log("허용문장우악!!!!!!!!!!!!!!!!!!!!!!");
   let sen_box = document.getElementById("sentence_result");
   let senten = document.createElement("label");
   senten.innerHTML = sen;
@@ -33,6 +34,8 @@ function true_sen_tag(sen) {
 }
 
 function false_sen_tag(sen, sen_value) {
+  console.log("허위문장이다!!!!!!!!!!!!!!!!!!!!");
+  console.log(sen_value);
   let sen_box = document.getElementById("sentence_result");
   let senten = document.createElement("label");
   senten.innerHTML = sen;

@@ -27,8 +27,8 @@ function btn_text_Disabled() {
 //분석
 function predict_please() {
   console.log("문장 분석 시작");
-  // scrollDisable();
-  // btn_text_Disabled();
+  scrollDisable();
+  btn_text_Disabled();
   var textarea = document.getElementById("input_text");
   valu = textarea.value;
   if (valu.replace(" ", "").length < 10) {

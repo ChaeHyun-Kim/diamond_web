@@ -10,7 +10,8 @@
     <script
       language="JavaScript"
       type="text/javascript"
-      src="../static/js/result_js17.js"
+      src="../static/js/first.js"
+      defer
     ></script>
 
     <!-- Favicon -->
@@ -50,6 +51,7 @@
 
     <!--font!-->
     <style>
+      @import url("https://cdn.rawgit.com/moonspam/NanumSquare/master/nanumsquare.css");
       @font-face {
         font-family: "EliceDigitalBaeum_Bold";
         src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2105_2@1.0/EliceDigitalBaeum_Bold.woff")
@@ -99,20 +101,44 @@
       .Gmk-font {
         font-family: "GmarketSansBold", sans-serif; /*웹 폰트 지정*/
       }
-      .SUIT-font {
-        font-family: "SUIT-Medium", sans-serif; /*웹 폰트 지정*/
+      .nanum-font1 {
+        font-family: "NanumSquare", san-serif;
+        font-weight: 1000;
+        font-size: 23px;
+        line-height: 1.2;
+      }
+      .nanum-font2 {
+        font-family: "NanumSquare", san-serif;
+        font-weight: 800;
+        font-size: 23px;
+        line-height: 1.2;
+      }
+      .nanum-font3 {
+        font-family: "NanumSquare", san-serif;
+        font-weight: 400;
+        font-size: 23px;
+        line-height: 1.2;
       }
     </style>
     <style>
       .image_full {
         max-width: 100%;
         max-height: 100%;
+        text-align: right;
+        /* display: block; */
         left: 0;
         right: 0;
         top: 0;
         bottom: 0;
         overflow: auto;
+        margin: auto;
         position: fixed;
+      }
+      .hidden {
+        height: 100%;
+        min-height: 100%;
+        overflow: hidden !important;
+        touch-action: none;
       }
     </style>
   </head>
@@ -132,7 +158,7 @@
         <div class="container-xxl bg-primary hero-header"></div>
         <!-- Navbar & Hero End -->
         <!-- main start -->
-        <div class="container-xxl py-0" style="text-align: center">
+        <div id="img_pos" class="container-xxl py-0" style="text-align: center">
           <div class="container py-1 px-lg-5">
             <!-- <h4 class="pb-2 px-5" style="float: left">광고내용 입력</h4> -->
 
@@ -145,29 +171,29 @@
                 border-radius: 7;
                 display: inline-block;
               "
-              class="pt-3 SUIT-font form-control shadow"
+              class="pt-4 nanum-font1 form-control shadow"
             >
-              <h4 class="SUIT-font" style="float: left">
+              <h4 class="nanum-font1" style="float: left">
                 허위·과대광고로 의심되는 광고가 있으신가요?
               </h4>
-              <h4 class="SUIT-font" style="float: left">
+              <h4 class="nanum-font1" style="float: left">
                 건강기능 식품과 일반식품의 광고 내용을 입력하여 허위·과대광고
                 유무와 판별 이유를 확인해보세요!
               </h4>
-              <h5 class="SUIT-font" style="color: #696969; float: left">
-                허위·과대광고 판별기는 광고내용을 더욱 까다롭게 판별하여 더욱
-                건강한 식품을 소비를 독려합니다.
+              <h5 class="nanum-font2" style="color: #696969; float: left">
+                허위·과대광고 판별기는 광고내용을 까다롭게 판별하여 더욱 건강한
+                식품을 소비를 독려합니다.
               </h5>
             </div>
           </div>
 
-          <!-- <img src="../static/img/pred_ing.PNG" class="image_full" /> -->
           <!-- 가운데 정렬 필요 -->
           <div class="container pb-5 px-lg-5">
             <div class="text-center pt-5">
               <form name="form">
                 <p>
                   <textarea
+                    spellcheck="false"
                     id="input_text"
                     type="text"
                     style="
@@ -177,36 +203,21 @@
                       color: #000;
                       border-radius: 7;
                       display: inline-block;
-
+                      font-size: 20px;
                       background-color: #efefef;
                     "
-                    class="SUIT-font mb-5 form-control shadow"
+                    class="nanum-font3 mb-5 form-control shadow"
                     name="sentence"
                     type="text"
                     placeholder="광고 내용을 입력해주세요"
                     autocomplete="off"
                   ></textarea>
                 </p>
-                <!-- <p>
-                  <input
-                    type="submit"
-                    style="
-                      font-size: x-large;
-                      color: white;
-                      width: 40%;
-                      display: inline-block;
-                      font-weight: bold;
-                      background-color: #4b89dc;
-                    "
-                    class="SUIT-font btn px-9 py-3 mt-0"
-                    value="분석시작"
-                  />
-                </p> -->
               </form>
               <div id="testdiv"></div>
               <button
                 id="start_btn"
-                onclick="page_open();"
+                onclick="predict_please();"
                 type="button"
                 style="
                   font-size: x-large;
@@ -216,7 +227,7 @@
                   font-weight: bold;
                   background-color: #4b89dc;
                 "
-                class="SUIT-font btn px-9 py-3 mt-0"
+                class="nanum-font1 btn px-9 py-3 mt-0"
               >
                 분석시작
               </button>

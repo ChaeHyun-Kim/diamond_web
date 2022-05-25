@@ -8,18 +8,30 @@
     <meta content="" name="keywords" />
     <meta content="" name="description" />
     
-
-    <script
-      language="JavaScript"
-      type="text/javascript"
-      src="../static/js/result_js17.js"
-    ></script>
+ 
     <script src="//code.jquery.com/jquery-3.4.1.min.js"></script>
+
+    <style>
+    .false_sen{
+      color: #ff0000;
+      font-size: 20px;
+    }
+    .true_sen{
+      color: rgb(0, 0, 0);
+      font-size: 20px;
+    }
+    .false_result{
+      color: #ff0000;
+    }
+    .true_result{
+      color: rgb(0, 34, 255);
+    }
+    </style>
     <script>
 
       $(document).ready(function () {
         // html 페이지에서 'rel=tooltip'이 사용된 곳에 마우스를 가져가면
-        $("a[rel=tooltip]")
+        $("label[rel=tooltip]")
           .mouseover(function (e) {
             var tip = $(this).attr("title");
       
@@ -33,8 +45,8 @@
           })
           .mousemove(function (e) {
             //마우스가 움직일 때 툴 팁이 따라 다니도록 위치값 업데이트
-            $("#tooltip").css("top", e.pageY );
-            $("#tooltip").css("left", e.pageX );
+            $("#tooltip").css("top", e.pageY+10);
+            $("#tooltip").css("left", e.pageX-15);
           })
           .mouseout(function () {
             //위에서 껐던 브라우져에서 제공하는 기본 툴 팁을 복원
@@ -44,7 +56,7 @@
       });
       </script>
     <script language="JavaScript" type="text/javascript" src="../static/js/main.js"></script>
-    
+  
 
     <!-- Favicon -->
     <link href="../img/favicon.ico" rel="icon" />
@@ -130,27 +142,64 @@
       .Gmk-font {
         font-family: "GmarketSansBold", sans-serif; /*웹 폰트 지정*/
       }
-      .SUIT-font {
-        font-family: "SUIT-Medium", sans-serif; /*웹 폰트 지정*/
+      .nanum-font1 {
+        font-family: "NanumSquare", san-serif;
+        font-weight: 800;
+        font-size: 23px;
+        line-height: 1.2;
+      }
+      .nanum-font2 {
+        font-family: "NanumSquare", san-serif;
+        font-weight: 800;
+        font-size: 23px;
+        line-height: 1.2;
+      }
+      .nanum-font3 {
+        font-family: "NanumSquare", san-serif;
+        font-weight: 400;
+        font-size: 23px;
+        line-height: 1.2;
       }
       /* 툴팁 스타일 */
     #tooltip {
     position: absolute;
     z-index: 999;
     color: rgb(10, 10, 10);
-    font-size: 15px;   
+    font-size: 20px;   
     }
     #tooltip .tipBody {
         background-color: rgb(255, 187, 187);
         padding: 8px;
     }
     </style> 
+    
+    <style>
+      .image_result {
+        max-width: 100%;
+        max-height: 100%;
+        text-align: right;
+        /* display: block; */
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        overflow: auto;
+        margin: auto;
+        position: fixed;
+      }
+      .hidden {
+        height: 100%;
+        min-height: 100%;
+        overflow: hidden !important;
+        touch-action: none;
+      }
+    </style>
       <!-- <script>
       var paramValue =request.getParameter('value');  
       </script> -->
   </head>
 
-  <body>
+  <body style="background-color: #76aef82e">
     <div class="container-xxl p-0" style="background-color: #fff">
       <!-- Navbar & Hero Start -->
       <div class="container-xxl position-relative p-0">
@@ -166,28 +215,26 @@
         <!-- Navbar & Hero End -->
         <!-- main start -->
         <div class="container-xxl py-0" style="text-align: center">
-          <div class="container py-1 px-lg-5">
-            <a rel="tooltip" title="123456789">
-              mouse over here
-            </a>
+          
+          <div id="test" class="container py-1 px-lg-5">
+       
             <!-- <h4 class="pb-2 px-5" style="float: left">광고내용 입력</h4> -->
             <div
               id = "sentence_result"
               style="
                 resize: none;
+                overflow:auto;
                 width: 90%;
                 height: 270px;
                 color: #000;
                 border-radius: 7;
                 display: inline-block;
+                word-break:  keep-all ;
                 background-color: #efefef;
                 text-align: left;
               "
-              class="SUIT-font form-control shadow mb-4"
-            >
-            <label style="color: red;" >123</label>
-
-            </div>
+              class="nanum-font1 form-control shadow mb-4"
+            ></div>
             <div
               style="
                 width: 90%;
@@ -197,30 +244,35 @@
                 display: inline-block;
                 text-align: left;
               "
-              class="py-3 SUIT-font form-control shadow"
+              class="py-3 nanum-font1 form-control shadow"
             >
-              <h4 class="SUIT-font" style="color: #ff0000">
-                광고 분석 결과 들어가는 곳
-              </h4>
-             
+              <h3 id = "final_result" class="nanum-font2" style="color: #000000">
+              </h3>
+            
+
             </div>
           </div>
           <div class="container py-5 px-lg-5">
             <div class="text-center pt-5">
-              <form>
-                <input  
-                type="submit"
-                value="재분석하기"
-                class="SUIT-font btn px-9 py-3 btn-primary mt-0"
+              <ul id="list">
+                <a href ="#" data-photo="123">FLI</a>
+                </ul>
+              <button
+                id="restart_btn"
+                onclick="restart();"
+                type="button"
                 style="
                   font-size: x-large;
                   color: white;
                   width: 40%;
                   display: inline-block;
                   font-weight: bold;
+                  background-color: #4b89dc;
                 "
-                >
-            </form>
+                class="nanum-font1 btn px-9 py-3 mt-0"
+              >
+                재분석하기
+              </button>
             </div>
           </form>
           </div>
@@ -260,6 +312,20 @@
     <!-- Footer End -->
 
     <!-- JavaScript Libraries -->
+    <script
+    language="JavaScript"      
+    type="text/javascript"
+    src="../static/js/predict17.js"
+  ></script>   
+  <script>
+    $(function(){
+      $('#list').tooltip({
+       content:function(){
+         return '<img src ="https://media.geeksforgeeks.org/wp-content/uploads/20190529122828/bs21.png"/>';
+       }
+      });
+     });
+        </script>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="../lib/wow/wow.min.js"></script>

@@ -9,12 +9,7 @@ function display_result() {
       if (data[4].includes(i)) {
         console.log("허위광고 문장 중 허위", i);
         index_what = data[4].indexOf(i);
-        // var file = "model/image/image_0.png";
-
-        // var image = new Image();
-        // image.src = file
-
-        false_sen_tag(data[3][i], data[5][index_what]);
+        false_sen_tag(data[3][i], data[5][index_what], i);
       } else {
         console.log("허위광고 문장 중 허용", i);
         true_sen_tag(data[3][i]);
@@ -38,30 +33,28 @@ function true_sen_tag(sen) {
   sen_box.appendChild(senten);
 }
 
-function false_sen_tag(sen, sen_value) {
+function false_sen_tag(sen, sen_value, i) {
   console.log("허위문장이다!!!!!!!!!!!!!!!!!!!!");
   console.log(sen_value);
   let sen_box = document.getElementById("sentence_result");
-
-  let test_div = document.getElementById("test");
-
-  let imagegs = document.createElement("img");
-  imagegs.setAttribute("src", "../static/img/image/image_0.PNG");
   // imagegs.setAttribute("class", "image_result");
   let senten = document.createElement("label");
   senten.innerHTML = sen;
   senten.setAttribute("class", "false_sen");
   senten.setAttribute("rel", "tooltip");
-  // senten.setAttribute(
-  //   "title",
-  //   "해당 문장의 위험도는  " +
-  //     String(Math.round(sen_value * 100, 2)) +
-  //     "입니다."
-  // );
-  senten.setAttribute("title", imagegs);
+  senten.setAttribute(
+    "title",
+    "해당 문장의 위험도는  " +
+      String(Math.round(sen_value * 100, 2)) +
+      "입니다."
+  );
+  senten.setAttribute(
+    "srcs",
+    "../static/img/image/image_" + String(i) + ".png"
+  );
+  // senten.setAttribute("title", imagegs);
   console.log(senten);
   sen_box.appendChild(senten);
-  test_div.appendChild(imagegs);
 }
 function false_result_tag(result_value) {
   let result_box = document.getElementById("final_result");

@@ -253,7 +253,8 @@ def make_plot(test_df, test_li, number, standard_score):
         b_color ='mistyrose'
         t_color = "red"
 
-    plt.figure(figsize=(20,5),facecolor=b_color)
+    plt.figure(figsize=(13,2),facecolor=b_color)
+    plt.title(ment, size = 10, color = t_color, pad = 5)
     for k in range(len(test_df.loc[number,'ko_processing'])):
         s = test_df.loc[number,'ko_processing'][k]
         k1=len(impact_columns)+k-len(test_df.loc[number,'ko_processing'])
@@ -262,40 +263,40 @@ def make_plot(test_df, test_li, number, standard_score):
             font1 = {'family':best_font,
                 'color':  'darkblue',
                 'weight': 'normal',
-                'size': 16}
+                'size': 8}
         elif va< -0.3:
             font1 = {'family':best_font,
                 'color':  'red',
                 'weight': 'normal',
-                'size': 16}
+                'size': 8}
 
         else:
             font1 = {'family':best_font,
                 'color':  'black',
                 'weight': 'normal',
-                'size': 16}
+                'size': 8}
 
 
         if k < 17:
             plt.rcParams['axes.unicode_minus'] =False
             plt.rc('font', family='NanumGothic')
-            plt.text(s=s, x=k*0.9, y=0,fontdict=font1,va='center',ha='center')
-            plt.text(s=va,x=k*0.9, y=-0.1,fontdict=font1,va='center',ha='center')
+            plt.text(s=s, x=k*0.5, y=0,fontdict=font1,va='center',ha='center')
+            plt.text(s=va,x=k*0.5, y=-0.05,fontdict=font1,va='center',ha='center')
         elif k < 34:
             plt.rcParams['axes.unicode_minus'] =False
             plt.rc('font', family='NanumGothic')
-            plt.text(s=s, x=k*0.9 - 17*0.9, y=-0.2,fontdict=font1,va='center',ha='center')
-            plt.text(s=va,x=k*0.9- 17*0.9, y=-0.3,fontdict=font1,va='center',ha='center')
+            plt.text(s=s, x=k*0.5 - 17*0.5, y=-0.15,fontdict=font1,va='center',ha='center')
+            plt.text(s=va,x=k*0.5- 17*0.5, y=-0.2,fontdict=font1,va='center',ha='center')
         else:
             plt.rcParams['axes.unicode_minus'] =False
             plt.rc('font', family='NanumGothic')
-            plt.text(s=s, x=k*0.9 - 34*0.9, y=-0.4,fontdict=font1,va='center',ha='center')
-            plt.text(s=va,x=k*0.9- 34*0.9, y=-0.5,fontdict=font1,va='center',ha='center')   
+            plt.text(s=s, x=k*0.5 - 34*0.5, y=-0.3,fontdict=font1,va='center',ha='center')
+            plt.text(s=va,x=k*0.5- 34*0.5, y=-0.35,fontdict=font1,va='center',ha='center')   
 
-    plt.xlim(-0.5,15)
+    plt.xlim(0.5,10)
     plt.ylim(-0.5,0.1)
     plt.axis('off')
-    plt.title(ment, size = 20, color = t_color, pad = 15)
+    
     # plt.show()
    
     print("문장별 위험도 : {:.3f}".format(1-score))

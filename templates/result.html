@@ -34,19 +34,22 @@
         $("label[rel=tooltip]")
           .mouseover(function (e) {
             var tip = $(this).attr("title");
+            var tip_src = $(this).attr("srcs");
       
             // 브라우져에서 제공하는 기본 툴 팁을 끈다
             $(this).attr("title", "");
-      
+            
+            $(this).attr("srcs", "");
             // css와 연동하기 위해 html 태그를 추가해줌
             $(this).append(
-              '<div id="tooltip"><div class="tipBody">' + tip + "</div></div>"
-            );
+              '<div id="tooltip"><div class="tipBody">' + tip + '<img src='+tip_src+'></div></div>');
+        
           })
+          
           .mousemove(function (e) {
             //마우스가 움직일 때 툴 팁이 따라 다니도록 위치값 업데이트
-            $("#tooltip").css("top", e.pageY+10);
-            $("#tooltip").css("left", e.pageX-15);
+            $("#tooltip").css("top", e.pageY+5);
+            $("#tooltip").css("left", e.pageX+5);
           })
           .mouseout(function () {
             //위에서 껐던 브라우져에서 제공하는 기본 툴 팁을 복원
@@ -216,7 +219,7 @@
         <!-- main start -->
         <div class="container-xxl py-0" style="text-align: center">
           
-          <div id="test" class="container py-1 px-lg-5">
+          <div class="container py-1 px-lg-5">
        
             <!-- <h4 class="pb-2 px-5" style="float: left">광고내용 입력</h4> -->
             <div
@@ -233,8 +236,8 @@
                 background-color: #efefef;
                 text-align: left;
               "
-              class="nanum-font1 form-control shadow mb-4"
-            ></div>
+              class="nanum-font1 form-control shadow mb-4">
+            </div>
             <div
               style="
                 width: 90%;
@@ -254,9 +257,7 @@
           </div>
           <div class="container py-5 px-lg-5">
             <div class="text-center pt-5">
-              <ul id="list">
-                <a href ="#" data-photo="123">FLI</a>
-                </ul>
+              
               <button
                 id="restart_btn"
                 onclick="restart();"
@@ -302,7 +303,6 @@
               </p>
 
               <a class="btn btn-link" href="/team_info">About Us</a>
-              <a class="btn btn-link" href="/topic_info">About Topic</a>
             </div>
           </div>
         </div>
@@ -315,17 +315,9 @@
     <script
     language="JavaScript"      
     type="text/javascript"
-    src="../static/js/predict17.js"
+    src="../static/js/predict20.js"
   ></script>   
-  <script>
-    $(function(){
-      $('#list').tooltip({
-       content:function(){
-         return '<img src ="https://media.geeksforgeeks.org/wp-content/uploads/20190529122828/bs21.png"/>';
-       }
-      });
-     });
-        </script>
+  
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="../lib/wow/wow.min.js"></script>

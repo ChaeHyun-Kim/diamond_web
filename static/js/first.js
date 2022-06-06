@@ -1,5 +1,4 @@
 function open_page() {
-  console.log("넘어가냐?");
   location.href = "/result_render";
 }
 function img_loading() {
@@ -26,7 +25,6 @@ function btn_text_Disabled() {
 
 //분석
 function predict_please() {
-  console.log("문장 분석 시작");
   scrollDisable();
   btn_text_Disabled();
   var textarea = document.getElementById("input_text");

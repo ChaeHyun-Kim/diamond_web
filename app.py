@@ -1,20 +1,16 @@
 # -*- coding: utf-8 -*-
 import string
-from flask import Flask, jsonify, render_template, send_from_directory,request,redirect,url_for
+from flask import Flask, jsonify, render_template, send_from_directory,request
 import tensorflow as tf
 import numpy as np
-
 from model.final_model import *
-
 from flask import request
 
 app = Flask(__name__)
 
-
 @app.route('/', methods=['GET','POST'])
 def main():
     return render_template('index.html')
-
 
 @app.route("/final", methods=["POST", "GET"])
 def final():
@@ -32,6 +28,12 @@ def result_render():
 def restart():
     return render_template('index.html')
 
+@app.route('/lib/<path:path>')
+def send_js(path):
+    return send_from_directory('lib', path)
+
+
+
 @app.route('/team_info', methods=["POST", "GET"])
 def team_info():
     return render_template('team_info.html')
@@ -42,9 +44,6 @@ def topic_info():
     return render_template('topic_info.html')
 
 
-@app.route('/lib/<path:path>')
-def send_js(path):
-    return send_from_directory('lib', path)
 
 @app.route("/ping", methods=['GET'])
 def ping():

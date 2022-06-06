@@ -24,7 +24,6 @@ function display_result() {
 }
 
 function true_sen_tag(sen) {
-  console.log("허용문장우악!!!!!!!!!!!!!!!!!!!!!!");
   let sen_box = document.getElementById("sentence_result");
   let senten = document.createElement("label");
   senten.innerHTML = sen;
@@ -34,7 +33,6 @@ function true_sen_tag(sen) {
 }
 
 function false_sen_tag(sen, sen_value, i) {
-  console.log("허위문장이다!!!!!!!!!!!!!!!!!!!!");
   console.log(sen_value);
   let sen_box = document.getElementById("sentence_result");
   // imagegs.setAttribute("class", "image_result");
@@ -52,10 +50,10 @@ function false_sen_tag(sen, sen_value, i) {
     "srcs",
     "../static/img/image/image_" + String(i) + ".png"
   );
-  // senten.setAttribute("title", imagegs);
   console.log(senten);
   sen_box.appendChild(senten);
 }
+
 function false_result_tag(result_value) {
   let result_box = document.getElementById("final_result");
   let result = document.createElement("h4");
